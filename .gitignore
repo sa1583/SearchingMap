@@ -86,3 +86,4 @@ lint/tmp/
 
 .idea
 app/src/main/java/fastcampus/aop/part2/searchingmap/utility/Key.kt
+app/src/main/res/values/api_key.xml

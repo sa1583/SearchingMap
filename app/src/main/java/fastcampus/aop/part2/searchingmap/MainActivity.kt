@@ -1,11 +1,13 @@
 package fastcampus.aop.part2.searchingmap
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import fastcampus.aop.part2.searchingmap.MapActivity.Companion.SEARCH_RESULT_EXTRA_KEY
 import fastcampus.aop.part2.searchingmap.databinding.ActivityMainBinding
 import fastcampus.aop.part2.searchingmap.model.LocationLatLngEntity
 import fastcampus.aop.part2.searchingmap.model.SearchResultEntity
@@ -50,6 +52,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private fun initAdapter() {
         adapter = SearchRecyclerAdapter {
             Toast.makeText(this@MainActivity, "${it.name}, ${it.fullAddress}", Toast.LENGTH_SHORT).show()
+            startActivity(
+                Intent(this, MapActivity::class.java).apply {
+                    putExtra(SEARCH_RESULT_EXTRA_KEY, it)
+                }
+            )
         }
     }
 
